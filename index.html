@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="logo"><h2>library</h2></div>
+            <button id="sign-in">Sign in</button>
+        </div>
+        <div id="main">
+            <div class="top"><button id="add"><i class="fa-solid fa-plus"></i> Add book</button></div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <form action="#">
+            <input type="text" id="title" name="title" maxlength="100" required placeholder="Title" value="">
+            <input type="text" id="author" name="author" required placeholder="Author" value="">
+            <input type="number" id="pages" name="pages" required placeholder="Pages" value="">
+            <div class="checkbox" style="display: flex;">
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" name="read" id="read">
+            </div>
+            <button class="submit" id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
