@@ -3,6 +3,8 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 20px;
 }
 
 #container {
@@ -61,6 +63,12 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+}
+
+ #main .bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
 }
 
 
@@ -153,4 +161,52 @@ label {
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: 600;
+}
+
+.card {
+    background-color: #5d5676;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottom-group {
+    width: 100%;
+    gap: 10px;
+}
+
+.btn-red {
+    background-color: rgb(253, 28, 28);
+    width: 100px;
+    height: 50px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+
+}
+
+.btn-green {
+    background-color: #bada55;
+    width: 100px;
+    height: 50px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    background-color: #5773FF;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
 }

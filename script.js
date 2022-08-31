@@ -1,6 +1,6 @@
 const add = document.getElementById('add');
 const pop = document.getElementById('popup');
-const bottomMain = document.querySelector('.main');
+const bottomMain = document.querySelector('.bottom');
 const submit = document.getElementById('sumbmit');
 const form = document.querySelector('form');
 const inputs = document.querySelectorAll('.input');
@@ -60,27 +60,55 @@ const addBook = e => {
             e.value = '';
         });
     }
+    display(newBook);
 }
 
-const display = () => {
+const display = (book) => {
     let card = document.createElement('div');
     let title = document.createElement('p');
     let author = document.createElement('p');
     let pages = document.createElement('p');
+    let buttonGroup = document.createElement('div');
     let read = document.createElement('button');
     let remove = document.createElement('button');
 
+    read.onclick = toggleRead(book);
+
     card.classList.add('card');
-    read.classList.add('submit');
-    remove.classList.add('submit');
+    buttonGroup.classList.add('button-group');
+    remove.classList.add('btn');
+    remove.textContent = 'remove';
+    title.textContent = `"${book.title}"`;
+    author.textContent = book.author;
+    pages.textContent = book.pages;
+
+    if (book.isread === true) {
+        read.textContent = "read";
+        read.className = 'btn-green';
+    }
+    else {
+        read.textContent = 'Not read';
+        read.className = 'btn-red';
+    }
+
 
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
-    card.appendChild(read);
-    card.appendChild(remove);
+    buttonGroup.appendChild(read);
+    buttonGroup.appendChild(remove);
+    card.appendChild(buttonGroup);
     bottomMain.appendChild(card);
 } 
+
+const toggleRead = book => {
+    if (book.isread === true) {
+        book.isread = false;
+    }
+    else {
+        book.isread = true;
+    }
+}
 
 
 add.addEventListener('click', e => {
@@ -89,6 +117,7 @@ add.addEventListener('click', e => {
 });
 
 form.onsubmit = addBook;
+
 // submit.onclick =  pop.classList.remove('active');
 // let book = getBook()
 
