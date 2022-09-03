@@ -4,44 +4,47 @@ const bottomMain = document.querySelector('.bottom');
 const submit = document.getElementById('sumbmit');
 const form = document.querySelector('form');
 const inputs = document.querySelectorAll('.input');
+const overlay = document.querySelector('.overlay');
 
 
-function Book(title, author, pages, isread) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isread = isread;
-}
-
-Book.prototype.toggleRead = function() {
-    this.isread = this.isread ? false : true
-}
-
-function Library() {
-    this.books = [];
-}
-
-Library.prototype.removeBook = function(title) {
-    this.books = this.books.filter(book => book.title == title);
-}
-
-Library.prototype.getBook = function(title) {
-    return this.books.find(book => book.title === title);
-}
-
-Library.prototype.inLibrary = function(newBook) {
-    return this.books.some(book => book.title === newBook.title)
-}
-
-Library.prototype.addBook = function(newBook) {
-    if (!this.inLibrary(newBook)) {
-        this.books.push(newBook)
+class Book {
+    constructor(title, author, pages, isread){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isread = isread;
     }
 }
 
-// const addBookToLibrary = book => {
-//     Library.push(book)
-// }
+Book.toggleRead = function() {
+    this.isread = this.isread ? false : true
+}
+
+class Library {
+    constructor() {
+        this.books = [];
+
+    }
+
+    removeBook = function(title) {
+        this.books = this.books.filter(book => book.title == title);
+    }
+
+    getBook = function(title) {
+        return this.books.find(book => book.title === title);
+    }
+
+    inLibrary = function(newBook) {
+        return this.books.some(book => book.title === newBook.title)
+    }
+
+    addBook = function(newBook) {
+        if (!this.inLibrary(newBook)) {
+            this.books.push(newBook)
+        }
+    }
+}
+
 let library = new Library();
 
 const getBook = () => {
@@ -71,6 +74,7 @@ const addBook = e => {
         });
     }
     display();
+    overlay.classList.remove('actv');
 }
 
 const display = () => {
@@ -155,10 +159,14 @@ const toggleRead = book => {
 // const remove = function() {
     
 // }
-
+overlay.addEventListener('click', e => {
+    pop.classList.remove('active');
+    overlay.classList.remove('actv');
+});
 
 add.addEventListener('click', e => {
     pop.classList.toggle("active");
+    overlay.classList.add('actv');
     // pop.id.add('active');
 });
 
